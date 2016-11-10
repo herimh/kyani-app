@@ -32,27 +32,46 @@ var login = {
         var passwordInput = document.getElementById('login_password');
         var loginForm = document.getElementById('login_form');
         var registerButton = document.getElementById('user_register');
+        var submitButton = document.getElementById('login_submit');//cJuan
+        var errorLog = document.getElementById('errorLog');//cJuan
+        var loading = document.getElementById('preloader');//cJuan
 
-        var loginRequest = {
-            doRequest: function (e) {
+
+        var logincheck= {//CJuan
+            doRequest: function(e){
+                submitButton. disabled = true;//CJuan  
+                loading.style.display= 'inline-table';
+                errorLog.style.display= 'none';
                 if (e.preventDefault) e.preventDefault();
+                app.ajaxRequest('GET', app.API_SERVER + 'token', null, logincheck.successResponse, null);                                 
+                return false;
+            },
+            successResponse: function(response_data, extra_data){
+                app.setServerToken(response_data.token);                               
+                loginRequest.doRequest();                                               
+            }
+
+        };
+
+        var loginRequest = {            
+            doRequest: function () {               
                 var data = {
                     '_token': app.getServerToken(),
                     'email': emailInput.value,
                     'password': passwordInput.value
-                };
-
+                };                
                 app.ajaxRequest('POST', app.API_SERVER + 'login', data, loginRequest.successResponse, null);
-
-                return false;
             },
-            successResponse: function(data, extra_data){
+            successResponse: function(data, extra_data){             
                 if (data.failed !== undefined){
                     console.log('failed');
                     console.log(data);
                     //TODO: send failed message
+                    submitButton. disabled = false;//CJuan 
+                    errorLog.style.display= 'block';
+                    loading.style.display= 'none';
                 }else {
-                    redirectLoginSuccess(data)
+                    redirectLoginSuccess(data)                                    
                 }
             }
         };
@@ -60,21 +79,20 @@ var login = {
         var redirectLoginSuccess = function (user_data){
             app.setUserApiToken(user_data.api_token);
             app.setUserData(user_data);
-
+            console.log('Redirigimos al videos');
             window.location = 'videos.html';
         };
 
         var redirectLoginFailed = function(){
 
         };
-
+        
         var redirectRegister = function(){
 
         };
-
-        registerButton.addEventListener('click', redirectRegister, true);
-        //submitButton.addEventListener('click', loginRequest.doRequest, true);
-        loginForm.addEventListener('submit', loginRequest.doRequest);
+        
+        registerButton.addEventListener('click', redirectRegister, true);        
+        loginForm.addEventListener('submit', logincheck.doRequest);
     },
 
     onLoginRequest: function () {
