@@ -37,6 +37,7 @@ var login = {
         var loading = document.getElementById('preloader');//cJuan
 
 
+
         var logincheck= {//CJuan
             doRequest: function(e){
                 submitButton. disabled = true;//CJuan  
@@ -76,6 +77,12 @@ var login = {
             }
         };
 
+        if (app.getUserApiToken() == null || app.getUserApiToken() == ''){            
+            console.log('No hay sesión');            
+        }else {
+            login.redirectToVideos();            
+        }
+
         var redirectLoginSuccess = function (user_data){
             app.setUserApiToken(user_data.api_token);
             app.setUserData(user_data);
@@ -95,6 +102,10 @@ var login = {
         loginForm.addEventListener('submit', logincheck.doRequest);
     },
 
+    redirectToVideos: function () {        
+        window.location = 'videos.html';      
+    },
+
     onLoginRequest: function () {
 
     },
@@ -102,7 +113,7 @@ var login = {
     onLoginResponse: function(){
 
     }
-
+    
     /*ajaxResponse: function(data, extra_data){
         console.log(data);
     }*/
