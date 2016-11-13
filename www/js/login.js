@@ -35,6 +35,10 @@ var login = {
         var submitButton = document.getElementById('login_submit');//cJuan
         var errorLog = document.getElementById('errorLog');//cJuan
         var loading = document.getElementById('preloader');//cJuan
+        var container_login = document.getElementById('container_login');//cJuan
+        var container_registro = document.getElementById('container_registro');//cJuan
+        var cancelar_registro = document.getElementById('cancelar_registro');//cJuan
+        var register_form = document.getElementById('register_form');//cJuan
 
 
 
@@ -94,16 +98,44 @@ var login = {
 
         };
         
-        var redirectRegister = function(){
-
+        var redirectRegister = function(e){
+            if (e.preventDefault) e.preventDefault();            
+            container_login.style.display= 'none';
+            container_registro.style.display= 'block';
+            return false;
         };
+
+        var ShowLogin = function(e){       
+            if (e.preventDefault) e.preventDefault();     
+            container_login.style.display= 'block';
+            container_registro.style.display= 'none';    
+            errorLog.style.display= 'none';                 
+            return false;
+        };
+
+
+        var ConfirmRegister= function(e){       
+            if (e.preventDefault) e.preventDefault();     
+            alert('Registro con éxito');     
+            login.redirectLogin();       
+            return false;
+        };
+
+
         
-        registerButton.addEventListener('click', redirectRegister, true);        
+        registerButton.addEventListener('click', redirectRegister, true);                  
         loginForm.addEventListener('submit', logincheck.doRequest);
+        cancelar_registro.addEventListener('click', ShowLogin, true);
+        register_form.addEventListener('submit', ConfirmRegister,true); 
     },
 
     redirectToVideos: function () {        
         window.location = 'videos.html';      
+    },
+
+    redirectLogin: function () {        
+        console.log('Redirigimos al Login después del registro');        
+        window.location = 'login.html';   
     },
 
     onLoginRequest: function () {
