@@ -42,11 +42,11 @@ var login = {
                     'password': passwordInput.value
                 };
 
-            if (app.getUserApiToken() == null || app.getUserApiToken() == ''){//código Juan
-            login.onLoadConfigurations();
-            }else {
-                login.redirectLoginSuccess();
-            }
+                if (app.getUserApiToken() == null || app.getUserApiToken() == ''){//código Juan
+                    login.onLoadConfigurations();
+                }else {
+                    login.redirectLoginSuccess();
+                }
 
 
                 /*app.ajaxRequest('POST', app.API_SERVER + 'login', data, loginRequest.successResponse, null);*/
@@ -96,7 +96,7 @@ var login = {
         app.ajaxRequest('GET', app.API_SERVER + 'token', null, login.onLoadConfigurationsSuccess, null)
     },
 
-        redirectToVideos: function () {
+    redirectToVideos: function () {
         window.location = 'videos.html';
     },
 
