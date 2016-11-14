@@ -57,40 +57,95 @@
 <body class='white'>
     <nav>
         <div class="nav-wrapper blue darken-4">
-            <a href="#" class="brand-logo">Kyani Login</a>
+            <a href="#" class="brand-logo">Kyani Login/Registro</a>
         </div>
     </nav>
     <div class="container">
-        <div class="row logo-container">
+        <div class="row logo-container" id="container_logo">
             <img src="icon.png">
         </div>
-        <div class="row">
+        <div class="row" id="container_login">
             <form class="col s12" action="#" method="post" id="login_form">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="login_email" type="text" name="email" class="validate">
+                        <input id="login_email" required="" aria-required="true" type="text" name="email" class="validate">
                         <label for="login_email">Email</label>
                     </div>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">vpn_key</i>
-                        <input id="login_password" type="password" name="password" class="validate">
+                        <input id="login_password" required="" aria-required="true" type="password" name="password" class="validate">
                         <label for="login_password">Contraseña</label>
-                    </div>
+                    </div>                    
                     <div class="input-field col s8 offset-s2">
                         <button class="btn-large waves-effect waves-light blue darken-4 col s12" type="submit" name="login" id="login_submit">Entrar
                             <i class="small material-icons right">send</i>
                         </button>
+                    </div>        
+                    <div class="preloader-wrapper small active" style="display: none;" id="preloader">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="input-field col s8 offset-s2">
-                        <button class="btn waves-effect waves-light col s12 light-blue darken-2" type="submit" name="register" id="user_register">Registrarse
+                        <button class="btn waves-effect waves-light col s12 light-blue darken-2" name="register" id="user_register">Registrarse
                             <i class="material-icons right">supervisor_account</i>
                         </button>
+                    </div>                    
+                </div>
+            </form>
+            <div class="input-field col s8 offset-s2">
+                <span style="color: red" hidden="" id="errorLog">Datos Incorrectos</span>
+            </div>
+        </div>
+        <div class="row" style="display: none;" id="container_registro">
+            <form class="col s12" action="#" method="post" id="register_form">
+                <div class="row">
+                    <div class="input-field col s12">
+                         <i class="material-icons prefix">email</i>
+                        <input id="register_email" required="" aria-required="true" type="text" name="register_email" class="validate">
+                        <label for="register_email">Email</label>
                     </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">vpn_key</i>
+                        <input id="register_password" required="" aria-required="true" type="password" name="register_password" class="validate">
+                        <label for="register_password">Ingresa tu Contraseña</label>
+                    </div>  
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">vpn_key</i>
+                        <input id="confirm_password" required="" aria-required="true" type="password" name="confirm_password" class="validate">
+                        <label for="confirm_password">Confirma tu Contraseña</label>
+                    </div>  
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="nombre" type="password" required="" aria-required="true" name="nombre" class="validate">
+                        <label for="nombre">Nombre</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="apellidos" required="" aria-required="true" type="password" name="apellidos" class="validate">
+                        <label for="apellidos">Apellidos</label>
+                    </div>
+                    <div class="input-field col s8 offset-s2">
+                        <button class="btn waves-effect waves-light col s12 light-blue darken-2" type="submit" name="form_register" id="form_register">Registrar
+                            <i class="small material-icons right">send</i>
+                        </button>
+                    </div> 
+                    <div class="input-field col s8 offset-s2">
+                        <button class="btn waves-effect waves-light red col s12 darken-2""  name="cancelar_registro" id="cancelar_registro">Cancelar                            
+                        </button>
+                    </div>  
                 </div>
             </form>
         </div>
-    </div>
 
     
     <!--Import jQuery before materialize.js-->
