@@ -47,11 +47,8 @@ var contact = {
 
         var contactToken= {//CJuan
             doRequest: function(e){
-                alert('hola mundo');
                 contact_submit. disabled = true;//CJuan
                 loading.style.display= 'inline-table';
-
-                console.log('Estamos en el doRequest del contactToken');
 
                 e.preventDefault();
                 app.ajaxRequest('GET', app.API_SERVER + 'token', null, contactToken.successResponse, null);

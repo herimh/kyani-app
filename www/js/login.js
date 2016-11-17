@@ -42,6 +42,7 @@ var login = {
         var loading = document.getElementById('preloader');//cJuan
         var container_login = document.getElementById('container_login');//cJuan
         var container_registro = document.getElementById('container_registro');//cJuan
+        var container_logo = document.getElementById('container_logo');//cJuan
         var cancelar_registro = document.getElementById('cancelar_registro');//cJuan
         var register_form = document.getElementById('register_form');//cJuan
 
@@ -139,7 +140,7 @@ var login = {
                 }
                 //return false;
             },
-            successResponse: function (data,extra_data){
+            successResponse: function (data, extra_data){
                 if (success = false)
                 {
                     alert('Hubo un error al Insertar');
@@ -148,18 +149,18 @@ var login = {
                 }
                 else
                 {
-                    login.redirectToVideos();            
+                    redirectLoginSuccess(data);
                 }
                 console.log(data);
             }
         };
 
 
-        if (app.getUserApiToken() == null || app.getUserApiToken() == ''){            
+        /*if (app.getUserApiToken() == null || app.getUserApiToken() == ''){
             console.log('No hay sesión');            
         }else {
             login.redirectToVideos();            
-        }
+        }*/
 
         var redirectLoginSuccess = function (user_data){
             app.setUserApiToken(user_data.api_token);
@@ -176,6 +177,7 @@ var login = {
             if (e.preventDefault) e.preventDefault();            
             container_login.style.display= 'none';
             container_registro.style.display= 'block';
+            container_logo.style.display= 'none';
             return false;
         };
 
@@ -183,7 +185,8 @@ var login = {
             if (e.preventDefault) e.preventDefault();     
             container_login.style.display= 'block';
             container_registro.style.display= 'none';    
-            errorLog.style.display= 'none';                 
+            errorLog.style.display= 'none';
+            container_logo.style.display= 'block';
             return false;
         };
 

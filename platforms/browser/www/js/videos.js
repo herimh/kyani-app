@@ -30,7 +30,11 @@ var videos = {
         $(document)
             .on('click', '.menu-item', function(e){
                 e.preventDefault();
-                loadItemVideos.doRequest($(e.target).parent(), $(e.target).data('id'));
+                if ($(e.target).data('key') == 'contact_form'){
+                    window.location = 'contact.html';
+                }else{
+                    loadItemVideos.doRequest($(e.target).parent(), $(e.target).data('id'));
+                }
                 return false;
             })
             .on('click', '#app_exit', function(e){

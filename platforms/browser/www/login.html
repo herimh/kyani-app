@@ -129,25 +129,41 @@
                     </div>  
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="nombre" type="password" required="" aria-required="true" name="nombre" class="validate">
+                        <input id="nombre" type="text" required="" aria-required="true" name="nombre" class="validate">
                         <label for="nombre">Nombre</label>
                     </div>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="apellidos" required="" aria-required="true" type="password" name="apellidos" class="validate">
+                        <input id="apellidos" required="" aria-required="true" type="text" name="apellidos" class="validate">
                         <label for="apellidos">Apellidos</label>
                     </div>
                     <div class="input-field col s8 offset-s2">
-                        <button class="btn waves-effect waves-light col s12 light-blue darken-2" type="submit" name="form_register" id="form_register">Registrar
+                        <button class="btn waves-effect waves-light col s12 light-blue darken-2" type="submit" name="submit_register" id="submit_register">Registrar
                             <i class="small material-icons right">send</i>
                         </button>
                     </div> 
+                    <div class="preloader-wrapper small active" style="display: none;" id="preloader_register">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="input-field col s8 offset-s2">
-                        <button class="btn waves-effect waves-light red col s12 darken-2""  name="cancelar_registro" id="cancelar_registro">Cancelar                            
+                        <button class="btn waves-effect waves-light red col s12 darken-2"  name="cancelar_registro" id="cancelar_registro">Cancelar
                         </button>
                     </div>  
                 </div>
             </form>
+            <div class="input-field col s8 offset-s2">
+                <span style="color: red" hidden="" id="errorLog_Register">La contraseñas no coinciden</span>
+            </div>
         </div>
 
     
