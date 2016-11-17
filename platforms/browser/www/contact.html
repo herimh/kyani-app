@@ -57,6 +57,9 @@
 <body class='white'>
     <nav>
         <div class="nav-wrapper blue darken-4">
+            <ul id="nav-mobile" class="left">
+                <li><a href="#" id="button_go_home"><i class="small material-icons">store</i></a></li>
+            </ul>
             <a href="#" class="brand-logo">Kyani Contact</a>
         </div>
     </nav>
@@ -104,9 +107,32 @@
                     </div>
                 </div>
             </form>
-            <div class="input-field col s8 offset-s2">
-                <span style="color: green" hidden="" id="errorLog">El comentario ha sido enviado</span>
+
+            <div class="row" id="success_display">
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <div class="card-panel grey lighten-5 z-depth-1">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                                <i class="small material-icons right">done_all</i>
+                            </div>
+                            <div class="col s10">
+                          <span class="black-text">
+                            ¡Estimado cliente, gracias por contactarnos!. <p/>En breve nos comunicaremos con usted, para proporcioarle toda la información que necesitas.
+                              <p>¡Que tenga un bonito día!</p>
+
+                          </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-field col s8 offset-s2">
+                    <button class="btn-large waves-effect waves-light blue darken-4 col s12" type="button" id="close_contact_form">Salir
+                        <i class="small material-icons right">settings_power</i>
+                    </button>
+                </div>
             </div>
+
+
         </div>
 
     

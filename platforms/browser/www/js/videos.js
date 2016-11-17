@@ -25,6 +25,7 @@ var videos = {
 
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("backbutton", app.finishOnBackDown, false);
 
         $(document)
             .on('click', '.menu-item', function(e){

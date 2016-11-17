@@ -18,8 +18,8 @@
  */
 var app = {
 
-    API_SERVER: 'http://mobile-admin.mikyanidist.com/api/v1/',
-    //API_SERVER: 'http://mobile-admin.dev/api/v1/',
+    //API_SERVER: 'http://mobile-admin.mikyanidist.com/api/v1/',
+    API_SERVER: 'http://mobile-admin.dev/api/v1/',
     USER_API_TOKEN_KEY: 'user_api_token',
     USER_DATA_KEY: 'user_data',
     SERVER_TOKEN: 'server_token',
@@ -94,5 +94,29 @@ var app = {
         app.set_storage_data('user.level', data.level);
         app.set_storage_data('user.notes', data.notes);
         app.set_storage_data('user.role', data.role);
+    },
+
+    onBackKeyDown: function () {
+        if (navigator.app != undefined ){
+            navigator.app.backHistory();
+        }else {
+            history.go(-1);
+        }
+    },
+
+    finishOnBackDown: function(){
+        if (typeof cordova !== 'undefined') {
+            if (navigator.app) {
+                navigator.app.exitApp();
+            }
+            else if (navigator.device) {
+                navigator.device.exitApp();
+            }
+        } else {
+            window.close();
+            $timeout(function () {
+                self.showCloseMessage = true;
+            });
+        }
     }
 };

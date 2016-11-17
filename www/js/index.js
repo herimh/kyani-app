@@ -7,15 +7,37 @@ var index = {
 
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("backbutton", app.finishOnBackDown, false);
 
         $(document)
             .on('click', '.menu-item', function(e){
                 e.preventDefault();
-                loadItemVideos.doRequest($(e.target).parent(), $(e.target).data('id'));
+                if ($(e.target).data('key') == 'contact_form'){
+                    window.location = 'contact.html';
+                }else{
+                    loadItemVideos.doRequest($(e.target).parent(), $(e.target).data('id'));
+                }
+
                 return false;
             })
             .on('click', '#partner_login a', function(e){
                 window.location = 'login.html'
+            })
+            .on('click', '#app_exit', function(e){
+                if (typeof cordova !== 'undefined') {
+                    if (navigator.app) {
+                        navigator.app.exitApp();
+                    }
+                    else if (navigator.device) {
+                        navigator.device.exitApp();
+                    }
+                } else {
+                    window.close();
+                    $timeout(function () {
+                        self.showCloseMessage = true;  //since the browser can't be closed (otherwise this line would never run), ask the user to close the window
+                    });
+                }
+
             });
 
 

@@ -24,6 +24,11 @@ var login = {
 
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+
+        $(document)
+            .on('click', '#button_go_home', function () {
+                app.onBackKeyDown();
+            })
     },
 
     //TODO: document ready
