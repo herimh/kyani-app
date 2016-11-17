@@ -40,11 +40,19 @@ var login = {
         var submitButton = document.getElementById('login_submit');//cJuan
         var errorLog = document.getElementById('errorLog');//cJuan
         var loading = document.getElementById('preloader');//cJuan
-        var container_logo = document.getElementById('container_logo');//cJuan
         var container_login = document.getElementById('container_login');//cJuan
         var container_registro = document.getElementById('container_registro');//cJuan
         var cancelar_registro = document.getElementById('cancelar_registro');//cJuan
         var register_form = document.getElementById('register_form');//cJuan
+
+        var register_email = document.getElementById('register_email');//cJuan
+        var register_password = document.getElementById('register_password');//cJuan
+        var nombre = document.getElementById('nombre');//cJuan
+        var apellidos = document.getElementById('apellidos');//cJuan
+        var submit_register= document.getElementById('submit_register');
+        var errorLog_Register= document.getElementById('errorLog_Register');
+        var confirm_password = document.getElementById('confirm_password');
+        var loading_register = document.getElementById('preloader_register');//cJuan
 
 
 
@@ -70,7 +78,6 @@ var login = {
                     '_token': app.getServerToken(),
                     'email': emailInput.value,
                     'password': passwordInput.value
-
                 };                
                 app.ajaxRequest('POST', app.API_SERVER + 'login', data, loginRequest.successResponse, null);
             },
@@ -88,17 +95,86 @@ var login = {
             }
         };
 
+
+        var contactToken= {//CJuan
+            doRequest: function(e){
+            submit_register. disabled = true;//CJuan  
+            loading_register.style.display= 'inline-table';
+            errorLog_Register.style.display= 'none';
+            console.log('Estamos en el doRequest del contactToken');        
+                if (e.preventDefault) e.preventDefault();
+                app.ajaxRequest('GET', app.API_SERVER + 'token', null, contactToken.successResponse, null);                                 
+                return false;
+            },
+            successResponse: function(response_data, extra_data){
+                app.setServerToken(response_data.token);       
+                console.log('guardamos el Token'+response_data.token);
+                loginRegister.doRequest();                                               
+            }
+
+        };
+
+
+
+
+        var loginRegister= {
+            doRequest:function (e){
+                //if (e.preventDefault) e.preventDefault();
+                var data= {
+                    '_token': app.getServerToken(),
+                    'email': register_email.value,
+                    'password': register_password.value,
+                    'name': nombre.value,
+                    'last_name': apellidos.value
+                };
+                if (register_password.value!=confirm_password.value)                 
+                {
+                    errorLog_Register.style.display= 'block';
+                    submit_register. disabled = false;//CJuan  
+                    loading_register.style.display= 'none';
+                }
+                else
+                {
+                    app.ajaxRequest('POST', app.API_SERVER + 'register_user', data, loginRegister.successResponse, null);
+                }
+                //return false;
+            },
+            successResponse: function (data,extra_data){
+                if (success = false)
+                {
+                    alert('Hubo un error al Insertar');
+                    submit_register. disabled = false;//CJuan  
+                    loading_register.style.display= 'none';
+                }
+                else
+                {
+                    login.redirectToVideos();            
+                }
+                console.log(data);
+            }
+        };
+
+
+        if (app.getUserApiToken() == null || app.getUserApiToken() == ''){            
+            console.log('No hay sesión');            
+        }else {
+            login.redirectToVideos();            
+        }
+
         var redirectLoginSuccess = function (user_data){
             app.setUserApiToken(user_data.api_token);
             app.setUserData(user_data);
             console.log('Redirigimos al videos');
             window.location = 'videos.html';
         };
+
+        var redirectLoginFailed = function(){
+
+        };
         
         var redirectRegister = function(e){
             if (e.preventDefault) e.preventDefault();            
             container_login.style.display= 'none';
-            container_logo.style.display= 'none';
             container_registro.style.display= 'block';
             return false;
         };
@@ -106,7 +182,6 @@ var login = {
         var ShowLogin = function(e){       
             if (e.preventDefault) e.preventDefault();     
             container_login.style.display= 'block';
-            container_logo.style.display= 'block';
             container_registro.style.display= 'none';    
             errorLog.style.display= 'none';                 
             return false;
@@ -115,9 +190,10 @@ var login = {
 
         var ConfirmRegister= function(e){       
             if (e.preventDefault) e.preventDefault();     
-            alert('Registro con éxito');     
-            login.redirectLogin();       
-            return false;
+            //alert('Registro con éxito');     
+            //login.redirectLogin();       
+            //return false;
+
         };
 
 
@@ -125,7 +201,8 @@ var login = {
         registerButton.addEventListener('click', redirectRegister, true);                  
         loginForm.addEventListener('submit', logincheck.doRequest);
         cancelar_registro.addEventListener('click', ShowLogin, true);
-        register_form.addEventListener('submit', ConfirmRegister,true); 
+        //register_form.addEventListener('submit', ConfirmRegister,true); 
+        register_form.addEventListener('submit', contactToken.doRequest); 
     },
 
     redirectToVideos: function () {        
@@ -134,7 +211,7 @@ var login = {
 
     redirectLogin: function () {        
         console.log('Redirigimos al Login después del registro');        
-        window.location = 'login.html';
+        //window.location = 'login.html';   
     },
 
     onLoginRequest: function () {

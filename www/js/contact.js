@@ -96,9 +96,4 @@ var contact = {
         contact_form.addEventListener('submit', contactToken.doRequest);    
     },
 
-    redirectContact: function () {        
-        console.log('Redirigimos Contact.html después del registro');        
-        window.location = 'contact.html';
-    },
-
 };
