@@ -53,7 +53,7 @@
 <body>
 
     <ul id="slide-out" class="side-nav">
-        <li>
+        <li id="menu_profile">
             <div class="userView">
                 <div class="background blue darken-4 col"></div>
                 <a href="#"><img class="circle" src="img/profile.png"></a>
@@ -61,21 +61,12 @@
                 <div><span class="white-text email" id="profile_email">jdandturk@gmail.com</span></div>
             </div>
         </li>
-        <!--<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-        <li><a href="#!">Second Link</a></li>
+
+
         <li><div class="divider"></div></li>
-        -->
-        <li><a class="subheader">Empezando</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">send</i>¿Qué es Kyani?</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">trending_up</i>Oportunidad</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">shopping_basket</i>Producto</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">speaker_notes</i>¿Tienes dudas?</a></li>
-        <li><a class="subheader">Pasos hacia el éxito</a></li>
-        <li><a class="waves-effect" href="#!"> (1) Lista prospectación</a></li>
-        <li><a class="waves-effect" href="#!"> (2) Prospectación</a></li>
-        <li><a class="waves-effect" href="#!">Tutoriales para el seguimiento y capacitación</a></li>
+        <li id="app_exit"><a class="waves-effect" href="#!"><i class="material-icons">settings_power</i>Salir</a></li>
         <li><div class="divider"></div></li>
-        <li id="app_logout"><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Salir</a></li>
+        <li id="app_logout"><a class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>Cerrar Sesión</a></li>
     </ul>
 
 
@@ -86,21 +77,13 @@
         </div>
     </nav>
     <div class="container">
-        <div class="row">
-            <ul class="collection" id="videos_container">
-                <!--<li class="collection-item avatar">
-                    <i class="material-icons circle red">play_arrow</i>
-                    <span class="title">Title</span>
-                    <p>First Line <br>
-                        Second Line
-                    </p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                </li>
-                -->
+        <div class="row" id="videos_container">
+            <ul class="collection" id="videos_list">
+
             </ul>
         </div>
     </div>
-    
+
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- Compiled and minified JavaScript -->

@@ -1,74 +1,89 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var index = {
 
     // Application Constructor
     initialize: function() {
         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
+
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+
+        $(document)
+            .on('click', '.menu-item', function(e){
+                e.preventDefault();
+                loadItemVideos.doRequest($(e.target).parent(), $(e.target).data('id'));
+                return false;
+            })
+            .on('click', '#partner_login a', function(e){
+                window.location = 'login.html'
+            });
+
+
+        //Funciones que responden a los eventos
+        var loadItemVideos = {
+            doRequest: function(menuElement, menuItemId){
+                var url = app.API_SERVER+'menu_item/'+menuItemId+'/videos';
+                app.ajaxRequest('GET', url, null, loadItemVideos.successResponse, menuElement)
+            },
+            successResponse: function (videos_data, menuElement) {
+                $('#loading_container').css('display', 'none');
+
+                $('#videos_list').html('');
+                for (var i=0; i< videos_data.length; i++){
+                    var video = videos_data[i]
+
+                    var newVideo = "<li class=\"collection-item avatar\">" +
+                        "<i class=\"material-icons circle red\">play_arrow</i><a href=\""+ video.url+"\"><span class=\"title\">"+ video.title +"</span></a>" +
+                        "<p></p> <a href=\""+ video.url +"\" class=\"secondary-content\">" +
+                        "<i class=\"material-icons\">grade</i></a></li>";
+
+                    $('#videos_list').append(newVideo);
+                }
+
+                $('.menu-item').parent().removeClass('active');
+                $(menuElement).addClass('active');
+            }
+        };
+
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
+
     onDeviceReady: function() {
-        //app.receivedEvent('deviceready');
+        $(".button-collapse").sideNav();
 
         if (app.getUserApiToken() == null || app.getUserApiToken() == ''){
-            index.onLoadConfigurations();
+            //TODO: show client screen
         }else {
             index.redirectToVideos();
         }
-    },
 
-    onLoadConfigurations: function(){
-        app.ajaxRequest('GET', app.API_SERVER + 'token', null, index.onLoadConfigurationsSuccess, null)
-    },
+        var loadMenu = {
+            doRequest: function () {
+                app.ajaxRequest('GET', app.API_SERVER+'client_menu', null, loadMenu.successResponse, null);
+            },
+            successResponse: function (menu_data, extra_data) {
 
-    onLoadConfigurationsSuccess: function (response_data, extra_data) {
-        app.setServerToken(response_data.token);
-        index.redirectToLogin();
-    },
+                var menuItems = '';
+                for (var i=0; i< menu_data.length; i++){
+                    if (menu_data[i].menu_items !== undefined && menu_data[i].menu_items.length > 0){
+                        menuItems += '<li><a class="subheader">'+ menu_data[i].name +'</a></li>';
 
-    redirectToLogin: function () {
-        console.log('redirecting login');
-        window.location = 'login.html';
+                        for (var j=0; j< menu_data[i].menu_items.length; j++){
+                            menuItems += ' <li><a class="waves-effect menu-item" href="#" data-id="'+ menu_data[i].menu_items[j].id +'" data-key="' + menu_data[i].menu_items[j].key + '">' +
+                                '<i class="material-icons">'+ menu_data[i].menu_items[j].icon +'</i>' + menu_data[i].menu_items[j].name + '</a></li>';
+                        }
+                    }
+                }
+
+                $(menuItems).insertAfter($("#menu_profile"));
+                $('.menu-item:first').click();
+
+            }
+        };
+
+        loadMenu.doRequest();
     },
 
     redirectToVideos: function () {
         window.location = 'videos.html';
     }
-    // Update DOM on a Received Event
-    /*receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-    }*/
 };
