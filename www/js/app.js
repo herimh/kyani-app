@@ -100,7 +100,14 @@ var app = {
         if (navigator.app != undefined ){
             navigator.app.backHistory();
         }else {
-            history.go(-1);
+            if(device.platform === "iOS" && parseInt(device.version) === 9){
+                console.log("version" + device.version);
+                console.log("iOS 9");
+                history.go(0);
+            }
+            else{
+                window.history.back();
+            }
         }
     },
 
