@@ -99,13 +99,16 @@ var app = {
     onBackKeyDown: function () {
 
         if(navigator.device!= undefined && navigator.device.platform === "iOS" && parseInt(navigator.device.version) === 9){
-            console.log("version" + device.version);
-            console.log("iOS 9");
+            //console.log("version" + device.version);
+            //console.log("iOS 9");
+            alert('navigator.device');
             history.go(0);
         }else if (navigator.app != undefined ){
+            alert('navigator.app');
             navigator.app.backHistory();
         }
         else{
+            alert('window');
             window.history.back();
         }
     },
