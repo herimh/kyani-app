@@ -97,19 +97,27 @@ var app = {
     },
 
     onBackKeyDown: function () {
-        if (navigator.app != undefined ){
+
+        if(navigator.device!= undefined && navigator.device.platform === "iOS" && parseInt(navigator.device.version) === 9){
+            console.log("version" + device.version);
+            console.log("iOS 9");
+            history.go(0);
+        }else if (navigator.app != undefined ){
             navigator.app.backHistory();
-        }else {
-            if(device.platform === "iOS" && parseInt(device.version) === 9){
-                console.log("version" + device.version);
-                console.log("iOS 9");
-                history.go(0);
-            }
-            else{
-                window.history.back();
-            }
+        }
+        else{
+            window.history.back();
         }
     },
+
+    /*onBackKeyDown: function () {
+        if( this.phonegapNavigationEnabled && nav && nav.app && nav.app.backHistory )
+        {
+            nav.app.backHistory();
+        } else {
+            window.history.back();
+        }
+    },*/
 
     finishOnBackDown: function(){
         if (typeof cordova !== 'undefined') {
@@ -124,6 +132,15 @@ var app = {
             $timeout(function () {
                 self.showCloseMessage = true;
             });
+        }
+    },
+
+    exitApp: function(){
+        if (navigator.app) {
+            navigator.app.exitApp();
+        }
+        else if (navigator.device) {
+            navigator.device.exitApp();
         }
     }
 };
