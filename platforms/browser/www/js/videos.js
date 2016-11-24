@@ -84,6 +84,7 @@ var videos = {
 
                 $('.menu-item').parent().removeClass('active');
                 $(menuElement).addClass('active');
+                $('.button-collapse').click();
             }
         };
     },
@@ -117,7 +118,8 @@ var videos = {
                 }
 
                 $(menuItems).insertAfter($("#menu_profile"));
-                $('.menu-item:eq(5)').click();
+                $('.menu-item:eq(7)').click();
+                $('.button-collapse').click();
 
             }
         };

@@ -51,6 +51,7 @@ var index = {
 
                 $('.menu-item').parent().removeClass('active');
                 $(menuElement).addClass('active');
+                $('.button-collapse').click();
             }
         };
 
@@ -85,6 +86,7 @@ var index = {
 
                 $(menuItems).insertAfter($("#menu_profile"));
                 $('.menu-item:first').click();
+                $('.button-collapse').click();
 
             }
         };
