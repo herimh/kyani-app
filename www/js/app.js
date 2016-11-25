@@ -102,15 +102,19 @@ var app = {
         if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i) || userAgent.match(/iPod/i)) {
             //console.log("version" + device.version);
             //console.log("iOS 9");
-            alert('navigator.device');
+            alert('navigator.device 1.0');
+            //history.go(-1);
             history.go(-1);
+            navigator.app.backHistory();
         }else if (navigator.app != undefined ){
-            alert('navigator.app');
+            alert('navigator.app 1.0');
             navigator.app.backHistory();
         }
         else{
-            alert('window');
+            alert('window 1.0');
             history.go(-1);
+            navigator.app.backHistory();
+
             //window.history.back();
         }
     },

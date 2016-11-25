@@ -18,8 +18,8 @@
  */
 var app = {
 
-    //API_SERVER: 'http://mobile-admin.mikyanidist.com/api/v1/',
-    API_SERVER: 'http://mobile-admin.dev/api/v1/',
+    API_SERVER: 'http://mobile-admin.mikyanidist.com/api/v1/',
+    //API_SERVER: 'http://mobile-admin.dev/api/v1/',
     USER_API_TOKEN_KEY: 'user_api_token',
     USER_DATA_KEY: 'user_data',
     SERVER_TOKEN: 'server_token',
@@ -98,18 +98,24 @@ var app = {
 
     onBackKeyDown: function () {
 
-        if(navigator.device != undefined && navigator.device.platform === "iOS" && parseInt(navigator.device.version) === 9){
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i) || userAgent.match(/iPod/i)) {
             //console.log("version" + device.version);
             //console.log("iOS 9");
-            alert('navigator.device');
-            history.go(0);
+            alert('navigator.device 1.0');
+            //history.go(-1);
+            history.go(-1);
+            navigator.app.backHistory();
         }else if (navigator.app != undefined ){
-            alert('navigator.app');
+            alert('navigator.app 1.0');
             navigator.app.backHistory();
         }
         else{
-            alert('window');
-            window.history.back();
+            alert('window 1.0');
+            history.go(-1);
+            navigator.app.backHistory();
+
+            //window.history.back();
         }
     },
 
