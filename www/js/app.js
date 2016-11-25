@@ -102,18 +102,20 @@ var app = {
         if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i) || userAgent.match(/iPod/i)) {
             //console.log("version" + device.version);
             //console.log("iOS 9");
-            alert('navigator.device 1.0');
+            alert('ios: ' + window.location);
             //history.go(-1);
             history.go(-1);
-            navigator.app.backHistory();
+            history.go(-1);
+
         }else if (navigator.app != undefined ){
             alert('navigator.app 1.0');
             navigator.app.backHistory();
         }
         else{
-            alert('window 1.0');
+            alert('window: ' + window.location);
             history.go(-1);
-            navigator.app.backHistory();
+            history.go(-1);
+            //navigator.app.backHistory();
 
             //window.history.back();
         }
