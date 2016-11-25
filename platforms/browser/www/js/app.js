@@ -100,24 +100,25 @@ var app = {
 
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
         if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i) || userAgent.match(/iPod/i)) {
-            //console.log("version" + device.version);
-            //console.log("iOS 9");
-            alert('ios: ' + window.location);
-            //history.go(-1);
-            history.go(-1);
-            history.go(-1);
+            window.history.back();
+            alert('ios: history back ');
+            navigator.app.backHistory();
+            alert('ios: app back ');
+            History.go(-1);
+            alert('ios: history go ');
 
         }else if (navigator.app != undefined ){
             alert('navigator.app 1.0');
             navigator.app.backHistory();
         }
         else{
-            alert('window: ' + window.location);
-            history.go(-1);
-            history.go(-1);
-            //navigator.app.backHistory();
-
-            //window.history.back();
+            alert('window: 1.1');
+            window.history.back();
+            alert('window: history back ');
+            navigator.app.backHistory();
+            alert('window: app back ');
+            History.go(-1);
+            alert('window: history go ');
         }
     },
 
