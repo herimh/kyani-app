@@ -73,10 +73,18 @@ var videos = {
                 for (var i=0; i< videos_data.length; i++){
                     var video = videos_data[i];
 
-                    var newVideo = "<li class=\"collection-item avatar\">" +
-                        "<i class=\"material-icons circle red\">play_arrow</i><a href=\""+ video.url+"\"><span class=\"title\">"+ video.title +"</span></a>" +
-                        "<p></p> <a href=\""+ video.url +"\" class=\"secondary-content\">" +
-                        "<i class=\"material-icons\">grade</i></a></li>";
+                    if (video.url_type == 'video'){
+                        var newVideo = "<li class=\"collection-item avatar\">" +
+                            "<i class=\"material-icons circle red\">play_arrow</i><a href=\""+ video.url+"\"><span class=\"title\">"+ video.title +"</span></a>" +
+                            "<p></p> <a href=\""+ video.url +"\" class=\"secondary-content\">" +
+                            "<i class=\"material-icons\">grade</i></a></li>";
+                    }else {
+                        var newVideo = "<li class=\"collection-item avatar\">" +
+                            "<i class=\"material-icons circle blue\">language</i><a href=\""+ video.url+"\"><span class=\"title\">"+ video.title +"</span></a>" +
+                            "<p></p> <a href=\""+ video.url +"\" class=\"secondary-content\">" +
+                            "<i class=\"material-icons\">grade</i></a></li>";
+                    }
+
 
                     $('#videos_list').append(newVideo);
                 }
@@ -93,7 +101,8 @@ var videos = {
         $(".button-collapse").sideNav();
 
         var userData = app.getUserData();
-        document.getElementById('profile_name').innerHTML = userData.name + ' '+userData.last_name;
+        var lastName  = (userData.last_name != undefined && userData.last_name != null && userData.last_name != 'null') ? userData.last_name : '';
+        document.getElementById('profile_name').innerHTML = userData.name + ' '+lastName;
         document.getElementById('profile_email').innerHTML = userData.email;
 
         //var videosContainer = document.getElementById('videos_container');
@@ -101,7 +110,7 @@ var videos = {
 
         var loadMenu = {
             doRequest: function () {
-                app.ajaxRequest('GET', app.API_SERVER+'partner_menu', null, loadMenu.successResponse, null);
+                app.ajaxRequest('GET', app.API_SERVER+'partner_menu/'+app.getUserLoggedId(), null, loadMenu.successResponse, null);
             },
             successResponse: function (menu_data, extra_data) {
 

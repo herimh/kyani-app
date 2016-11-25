@@ -18,8 +18,8 @@
  */
 var app = {
 
-    API_SERVER: 'http://mobile-admin.mikyanidist.com/api/v1/',
-    //API_SERVER: 'http://mobile-admin.dev/api/v1/',
+    //API_SERVER: 'http://mobile-admin.mikyanidist.com/api/v1/',
+    API_SERVER: 'http://mobile-admin.dev/api/v1/',
     USER_API_TOKEN_KEY: 'user_api_token',
     USER_DATA_KEY: 'user_data',
     SERVER_TOKEN: 'server_token',
@@ -81,8 +81,16 @@ var app = {
             last_name: app.get_storage_data('user.last_name'),
             notes: app.get_storage_data('user.notes'),
             level: app.get_storage_data('user.level'),
-            role: app.get_storage_data('user.role')
+            mobile_role: app.get_storage_data('user.mobile_role')
         }
+    },
+
+    getUserMobileRole: function(){
+        return app.get_storage_data('user.mobile_role');
+    },
+
+    getUserLoggedId: function(){
+        return app.get_storage_data('user.id');
     },
 
     setUserData: function(data) {
@@ -93,7 +101,7 @@ var app = {
         app.set_storage_data('user.last_name', data.last_name);
         app.set_storage_data('user.level', data.level);
         app.set_storage_data('user.notes', data.notes);
-        app.set_storage_data('user.role', data.role);
+        app.set_storage_data('user.mobile_role', data.mobile_role);
     },
 
     onBackKeyDown: function () {
@@ -101,24 +109,24 @@ var app = {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
         if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i) || userAgent.match(/iPod/i)) {
             window.history.back();
-            alert('ios: history back ');
+            //alert('ios: history back ');
             navigator.app.backHistory();
-            alert('ios: app back ');
+            //alert('ios: app back ');
             History.go(-1);
-            alert('ios: history go ');
+            //alert('ios: history go ');
 
         }else if (navigator.app != undefined ){
-            alert('navigator.app 1.0');
+            //alert('navigator.app 1.0');
             navigator.app.backHistory();
         }
         else{
-            alert('window: 1.1');
+            //alert('window: 1.1');
             window.history.back();
-            alert('window: history back ');
+            //alert('window: history back ');
             navigator.app.backHistory();
-            alert('window: app back ');
+            //alert('window: app back ');
             History.go(-1);
-            alert('window: history go ');
+            //alert('window: history go ');
         }
     },
 
