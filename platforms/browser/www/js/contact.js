@@ -31,6 +31,9 @@ var contact = {
             })
             .on('click', '#button_go_home', function () {
                 app.onBackKeyDown();
+            })
+            .on('click', '#contact_country', function(){
+                $(this).focus();
             });
     },
 
@@ -42,6 +45,8 @@ var contact = {
         var contact_comment = document.getElementById('contact_comment');
         var contact_form = document.getElementById('contact_form');
         var contact_submit = document.getElementById('contact_submit');
+        var contact_whatsapp = document.getElementById('contact_whatsapp');
+        var contact_country = document.getElementById('contact_country');
         var loading = document.getElementById('preloader');//cJuan
 
 
@@ -68,6 +73,8 @@ var contact = {
                     'name': contact_name.value,
                     'email': contact_email.value,
                     'phone': contact_phone.value,
+                    'whatsapp': contact_whatsapp.value,
+                    'country': $(contact_country).find('option:selected').text(),
                     'comments': contact_comment.value
                 };                
                 app.ajaxRequest('POST', app.API_SERVER + 'contact', data, contactInsert.successResponse, null);

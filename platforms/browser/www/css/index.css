@@ -25,3 +25,16 @@ body{
 .loading-label{
     margin-top: 20px;
 }
+
+select#contact_country{
+    margin-top: 5px;
+}
+
+i.contact_country{
+    margin-top: 5px;
+}
+
+select{
+    width: calc(100% - 3rem);
+    margin-left: 3rem;
+}

@@ -15,7 +15,7 @@
     </author>
     <content src="index.html" />
     <icon src="icon.png" />
-    <splash src="logo.png" />
+    <splash src="icon.png" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
