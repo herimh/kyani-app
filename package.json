@@ -17,5 +17,41 @@
   "bugs": {
     "url": "https://github.com/phonegap/phonegap-app-hello-world/issues"
   },
-  "homepage": "https://github.com/phonegap/phonegap-app-hello-world"
+  "homepage": "https://github.com/phonegap/phonegap-app-hello-world",
+  "cordovaPlugins": [
+    "cordova-plugin-battery-status",
+    "cordova-plugin-camera",
+    "cordova-plugin-media-capture",
+    "cordova-plugin-file",
+    "cordova-plugin-compat",
+    "cordova-plugin-console",
+    "cordova-plugin-contacts",
+    "cordova-plugin-device",
+    "cordova-plugin-device-motion",
+    "cordova-plugin-device-orientation",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-globalization",
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-media",
+    "cordova-plugin-network-information",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "cordova-plugin-vibration",
+    "cordova-plugin-whitelist",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": [
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    },
+    {
+      "platform": "browser",
+      "version": "",
+      "locator": "browser"
+    }
+  ]
 }

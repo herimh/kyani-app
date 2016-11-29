@@ -1,3 +1,5 @@
-platforms/android/*
-platforms/browser/*
-.idea/*
+platforms/android/
+platforms/browser/
+platforms/ios/
+.idea/
+resources/*
