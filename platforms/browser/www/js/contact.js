@@ -35,6 +35,7 @@ var contact = {
             .on('click', '#contact_country', function(){
                 $(this).focus();
             });
+
     },
 
     //TODO: document ready
@@ -96,8 +97,63 @@ var contact = {
             }
         };
 
+        $('#contact_form').validate({
+            rules: {
+                contact_email: {
+                    required: true,
+                    email: true
+                },
+                contact_name: {
+                    required: true,
+                    minlength: 5
+                },
+                contact_phone: {
+                    number: true,
+                    minlength: 8
+                },
+                contact_whatsapp: {
+                    required: true,
+                    number: true,
+                    minlength: 10
+                }
+            },
+            //For custom messages
+            messages: {
+                contact_email:{
+                    required: "Escribe tu email",
+                    email: "Email no válido"
+                },
+                contact_name:{
+                    required: "Escribe tu nombre y apellidos",
+                    minlength: "Escribe al menos 5 letras"
+                },
+                contact_phone: {
+                    number: 'Solo se aceptan numeros',
+                    minlength: 'Escribe al menos 8 numeros'
+                },
+                contact_whatsapp: {
+                    required: 'El numero de whatsapp es requerido',
+                    number: 'Solo se aceptan numeros',
+                    minlength: 'Escribe al menos 8 numeros'
+                }
+            },
+            submitHandler: function (form, event) {
+                contactToken.doRequest(event)
+            },
+
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
                        
-        contact_form.addEventListener('submit', contactToken.doRequest);    
+        //contact_form.addEventListener('submit', contactToken.doRequest);
     },
 
 };

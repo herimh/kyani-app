@@ -18,8 +18,8 @@
  */
 var app = {
 
-    API_SERVER: 'http://mobile-admin.mikyanidist.com/api/v1/',
-    //API_SERVER: 'http://mobile-admin.dev/api/v1/',
+    //API_SERVER: 'http://mobile-admin.mikyanidist.com/api/v1/',
+    API_SERVER: 'http://mobile-admin.dev/api/v1/',
     USER_API_TOKEN_KEY: 'user_api_token',
     USER_DATA_KEY: 'user_data',
     SERVER_TOKEN: 'server_token',

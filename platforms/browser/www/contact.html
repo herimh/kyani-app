@@ -70,22 +70,22 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">email</i>
                         <input id="contact_email" required="" aria-required="true" type="email" name="contact_email" class="validate">
-                        <label for="contact_email">Email</label>
+                        <label for="contact_email">Email *</label>
                     </div>    
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
                         <input id="contact_name" required="" aria-required="true" type="text" name="contact_name" class="validate">
-                        <label for="contact_name">Nombre</label>
+                        <label for="contact_name">Nombre y Apellidos *</label>
                     </div>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">contact_phone</i>
-                        <input id="contact_phone" required="" aria-required="true" type="text" name="contact_phone" class="validate">
+                        <input id="contact_phone" type="number" name="contact_phone" class="validate">
                         <label for="contact_phone">Teléfono</label>
                     </div>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">perm_phone_msg</i>
-                        <input id="contact_whatsapp" required="" aria-required="true" type="text" name="contact_whatsapp" class="validate" placeholder="ej. +52 8113546324">
-                        <label for="contact_whatsapp">Whatsapp</label>
+                        <input id="contact_whatsapp" required aria-required="true" type="number" name="contact_whatsapp" class="validate">
+                        <label for="contact_whatsapp">Whatsapp *</label>
                     </div>
                     <div class="input-field col s12">
                         <i class="material-icons prefix contact_country">language</i>
@@ -329,7 +329,7 @@
                     </div>
                     <div class="input-field col s12">
                       <i class="material-icons prefix">comment</i>
-                      <textarea id="contact_comment" required="" class="materialize-textarea"></textarea>
+                      <textarea id="contact_comment" class="materialize-textarea"></textarea>
                       <label for="contact_comment">Agrega un Comentario</label>
                     </div>
                     <div class="input-field col s8 offset-s2">
@@ -388,6 +388,8 @@
 
     <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
 
+    <script type="text/javascript" src="js/external_libs/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/external_libs/additional-methods.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/contact.js"></script>
