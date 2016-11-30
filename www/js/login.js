@@ -205,7 +205,68 @@ var login = {
         loginForm.addEventListener('submit', logincheck.doRequest);
         cancelar_registro.addEventListener('click', ShowLogin, true);
         //register_form.addEventListener('submit', ConfirmRegister,true); 
-        register_form.addEventListener('submit', contactToken.doRequest); 
+        //register_form.addEventListener('submit', contactToken.doRequest);
+
+        $('#register_form').validate({
+            rules: {
+                register_email: {
+                    required: true,
+                    email: true
+                },
+                register_password: {
+                    required: true,
+                    minlength: 8
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 8
+                },
+                nombre: {
+                    required: true,
+                    minlength: 3
+                },
+                apellidos: {
+                    required: true,
+                    minlength: 3
+                }
+            },
+            //For custom messages
+            messages: {
+                register_email:{
+                    required: "Escribe tu email",
+                    email: "Email no válido"
+                },
+                register_password:{
+                    required: "Escribe una contraseá",
+                    minlength: "Escribe al menos 8 caracteres"
+                },
+                confirm_password:{
+                    required: "Escribe una contraseá",
+                    minlength: "Escribe al menos 8 caracteres"
+                },
+                nombre: {
+                    number: 'El nombre es requerido',
+                    minlength: 'Escribe al menos 3 caracteres'
+                },
+                apellidos: {
+                    required: 'El apellido es requerido',
+                    minlength: 'Escribe al menos 3 caracteres'
+                }
+            },
+            submitHandler: function (form, event) {
+                contactToken.doRequest(event)
+            },
+
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
     },
 
     redirectToVideos: function () {        
