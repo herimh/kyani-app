@@ -2,12 +2,9 @@
 <widget id="com.mikyanidist.kyani-app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Kyani App</name>
     <description>
-        Kyani application.
+        Kyani Application.
     </description>
-    <author email="heri185403@gmail.com" href="http://www.mastheri.mx">
-        Heriberto Monterrubio
-    </author>
-    <author email="enriquerguezs@gmail.com" href="http://www.mikyanidist.com">
+    <author email="enriquerguezs@icloud.com" href="http://www.mikyanidist.com">
         Enrique Rodriguez
     </author>
     <content src="index.html" />
