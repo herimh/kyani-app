@@ -1,5 +1,5 @@
 platforms/android/
 platforms/browser/
 platforms/ios/
-.idea/
+.idea/*
 resources/*
