@@ -37,7 +37,7 @@ var videos = {
                 }
                 return false;
             })
-            .on('click', '#app_exit', function(e){
+            /*.on('click', '#app_exit', function(e){
                 if (typeof cordova !== 'undefined') {
                     if (navigator.app) {
                         navigator.app.exitApp();
@@ -52,7 +52,7 @@ var videos = {
                     });
                 }
 
-            })
+            })*/
             .on('click', '#app_logout', function(e){
                 app.clear_storage();
                 window.location = 'index.html';

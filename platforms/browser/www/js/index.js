@@ -22,10 +22,10 @@ var index = {
             })
             .on('click', '#partner_login a', function(e){
                 window.location = 'login.html'
-            })
-            .on('click', '#app_exit', function(e){
-                app.exitApp();
             });
+            /*.on('click', '#app_exit', function(e){
+                app.exitApp();
+            });*/
 
 
         //Funciones que responden a los eventos
