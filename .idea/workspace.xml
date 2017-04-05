@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e68f001f-8514-4f30-8ec2-ab342b8f2cce" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
     </list>
     <ignored path="kyani-app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +38,18 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="71" lean-forward="true" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
+            <state relative-caret-position="480">
+              <caret line="33" column="73" lean-forward="true" selection-start-line="33" selection-start-column="73" selection-end-line="33" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="649">
+              <caret line="113" column="72" lean-forward="true" selection-start-line="113" selection-start-column="72" selection-end-line="113" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -65,9 +77,9 @@
         <option value="$PROJECT_DIR$/www/js/contact.js" />
         <option value="$PROJECT_DIR$/www/login.html" />
         <option value="$PROJECT_DIR$/www/js/login.js" />
-        <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/www/index.html" />
       </list>
     </option>
   </component>
@@ -112,6 +124,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="kyani-app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kyani-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kyani-app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kyani-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kyani-app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -236,12 +280,12 @@
       <workItem from="1486621678488" duration="691000" />
       <workItem from="1490552440735" duration="7469000" />
       <workItem from="1490640019725" duration="10000" />
-      <workItem from="1491360741907" duration="2615000" />
+      <workItem from="1491360741907" duration="4049000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33900000" />
+    <option name="totallyTimeSpent" value="35334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-4" width="1920" height="1084" extended-state="6" />
@@ -479,13 +523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="70" column="51" lean-forward="false" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -553,10 +590,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="113" column="72" lean-forward="true" selection-start-line="113" selection-start-column="72" selection-end-line="113" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="71" lean-forward="true" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
+        <state relative-caret-position="480">
+          <caret line="33" column="73" lean-forward="true" selection-start-line="33" selection-start-column="73" selection-end-line="33" selection-end-column="73" />
           <folding />
         </state>
       </provider>
